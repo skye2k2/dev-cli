@@ -18,9 +18,11 @@ As an engineer responsible for the maintenance of > 50 disparate repositories, I
 
 ### Install with npm
 Installing globally will give you access to the `dev` command in your terminal.
+
 ```bash
 npm i -g skye2k2/dev-cli
 ```
+
 ### Install with Yarn (if desired)
 If you haven't already installed `yarn`, do so as instructed here:
 
@@ -29,9 +31,7 @@ https://yarnpkg.com/en/docs/install
 Then run:
 
 ```bash
-
 yarn global add https://github.com/skye2k2/dev-cli.git
-
 ```
 
 </details>
