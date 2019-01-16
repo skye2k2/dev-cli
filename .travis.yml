@@ -32,7 +32,7 @@ before_install:
 install:
   - npm install
 before_script:
-  - node_modules/fs-common-build-scripts/bin/before_script.sh
+  - bin/before_script.sh
 script:
   - 'npm run standard && npx nyc mocha test/globals.js test/*-test.js'
 after_success:
@@ -40,4 +40,4 @@ after_success:
 after_failure:
 
 after_script:
-  - node_modules/fs-common-build-scripts/bin/after_script.sh
+  - bin/after_script.sh
