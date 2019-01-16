@@ -29,7 +29,9 @@ https://yarnpkg.com/en/docs/install
 Then run:
 
 ```bash
+
 yarn global add https://github.com/skye2k2/dev-cli.git
+
 ```
 
 </details>
@@ -58,7 +60,6 @@ A repository management script that performs a number of different functions.
 
 `-`:
 
-
 #### _Flags specific to running against local repositories:_
 
 `-c='command(s) to run'`: Run the specified command(s).
@@ -67,10 +68,10 @@ A repository management script that performs a number of different functions.
 <details>
 <summary>Package dependency details</summary>
 
- - boxen, got, inquirer, netrc, ora, semver-diff are required by checkIfOutdated, which determines if the installed version
+- boxen, got, inquirer, netrc, ora, semver-diff are required by checkIfOutdated, which determines if the installed version of dev-cli is outdated and manages the self-update process.
 
 </details>
 
 ## TODOs:
 
- - Actually add some useful scripts
+- Actually add some useful scripts
