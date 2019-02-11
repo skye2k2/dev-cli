@@ -29,7 +29,7 @@
     "standard": "semistandard --verbose '**/*.js' | snazzy",
     "standard-fix": "semistandard --verbose '**/*.js' --fix | snazzy",
     "start": "node index",
-    "test": "nyc mocha test/globals.js test/*-test.js",
+    "test": "nyc mocha test/global-config.js test/*-test.js",
     "lintCheck": "eslint index.js src/"
   },
   "dependencies": {

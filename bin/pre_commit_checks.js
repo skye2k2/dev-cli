@@ -11,7 +11,7 @@
 const fs = require('fs');
 const { exec } = require('child_process');
 
-let packageFile;
+let packageFile; // eslint-disable-line no-unused-vars
 this.error = false;
 
 try {
