@@ -18,6 +18,11 @@ process.env.TRAVIS_PULL_REQUEST = 'false'; // Make sure this is disabled before 
 // END HARDCODED LOCAL TESTING DATA
 
 if (process.env.TRAVIS_EVENT_TYPE === 'cron' && process.env.TRAVIS_PULL_REQUEST === 'false') {
+} else {
+  console.log('Skipping debt audit');
+}
+
+function uncoverDebt () {
   console.log('Running debt audit');
 
   // ONCE SUPPORTED: Reset PR and commit-related variables so that the notification message is not confusing: https://github.com/travis-ci/travis-ci/issues/7486
@@ -26,11 +31,9 @@ if (process.env.TRAVIS_EVENT_TYPE === 'cron' && process.env.TRAVIS_PULL_REQUEST 
   // Note: `|| true` is tacked on so that if the grep command doesn't find anything we don't throw an error.
 
   // TODO: FIGURE OUT THE RIGHT WAY TO EXCLUDE DOTFILES FROM SEARCH
-  let resultForToDos = runCommand('grep -iIRoc --exclude=.*  --exclude-dir=node_modules --exclude-dir=bower_components TODO ./ || true', 'todo'); // eslint-disable-line no-unused-vars
+  let resultForToDos = runCommand('grep -iIRoc --exclude=.*  --exclude-dir=node_modules --exclude-dir=bower_components TODO ./ || true', 'TODO'); // eslint-disable-line no-unused-vars
 
-  let resultForHacks = runCommand('grep -iIRoc --exclude=.*  --exclude-dir=node_modules --exclude-dir=bower_components HACK ./ || true', 'todo'); // eslint-disable-line no-unused-vars
-} else {
-  console.log('Skipping debt audit');
+  let resultForHacks = runCommand('grep -iIRoc --exclude=.*  --exclude-dir=node_modules --exclude-dir=bower_components HACK ./ || true', 'HACK'); // eslint-disable-line no-unused-vars
 }
 
 // Run commands, and interpret non-zero-length string results as success
@@ -49,3 +52,7 @@ function runCommand (command, commandDesignation) {
     });
   });
 }
+
+module.exports = {
+  uncoverDebt: uncoverDebt
+};

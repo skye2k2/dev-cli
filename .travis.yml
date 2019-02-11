@@ -34,7 +34,7 @@ install:
 before_script:
   - bin/before_script.sh
 script:
-  - 'npm run standard && npx nyc mocha test/globals.js test/*-test.js'
+  - 'npm run standard && npx nyc mocha test/global-config.js test/*-test.js'
 after_success:
 
 after_failure:
