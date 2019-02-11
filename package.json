@@ -1,0 +1,87 @@
+{
+  "name": "dev-cli",
+  "version": "0.0.0",
+  "description": "A node-based CLI to run interesting commands",
+  "author": {
+    "name": "Clif Bergmann",
+    "url": "https://github.com/skye2k2"
+  },
+  "bin": {
+    "dev": "./index.js"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "homepage": "https://github.com/skye2k2/dev-cli#readme",
+  "keywords": [
+    "CLI"
+  ],
+  "license": "GPL-3.0-or-later",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skye2k2/dev-cli.git"
+  },
+  "scripts": {
+    "precommit": "node bin/pre_commit_checks.js && bin/pre_commit_commands.sh",
+    "preinstall": "git config --global url.https://github.com/.insteadOf git://github.com/",
+    "pretest": "semistandard --verbose '**/*.js' --fix | snazzy",
+    "standard": "semistandard --verbose '**/*.js' | snazzy",
+    "standard-fix": "semistandard --verbose '**/*.js' --fix | snazzy",
+    "start": "node index",
+    "test": "nyc mocha test/global-config.js test/*-test.js",
+    "lintCheck": "eslint index.js src/"
+  },
+  "dependencies": {
+    "boxen": "^2.0.0",
+    "chalk": "^2.4.0",
+    "commander": "^2.19.0",
+    "config-manager": "^1.0.2",
+    "got": "^9.3.1",
+    "inquirer": "^6.1.0",
+    "netrc": "^0.1.4",
+    "ora": "^3.0.0",
+    "semver-diff": "^2.1.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "husky": "^0.14.3",
+    "semistandard": "^12.0.0",
+    "snazzy": "^7.0.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "mocha": true
+    },
+    "extends": [
+      "frontier"
+    ],
+    "rules": {
+      "no-await-in-loop": "off",
+      "no-constant-condition": "off",
+      "no-param-reassign": "off"
+    }
+  },
+  "nyc": {
+    "report-dir": "reports/coverage",
+    "reporter": [
+      "text",
+      "lcov"
+    ]
+  },
+  "semistandard": {
+    "about": "https://github.com/Flet/semistandard#javascript-semi-standard-style",
+    "globals": [
+      "expect"
+    ],
+    "ignore": [
+      "**/*node_modules*/**",
+      "**/reports/**",
+      "**/test/**"
+    ]
+  }
+}
