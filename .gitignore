@@ -9,6 +9,7 @@
 .monitor
 .nyc_output
 .s3creds
+.scannerwork
 .vscode
 .vscode/*
 /reports

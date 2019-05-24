@@ -1,4 +1,8 @@
- # Branch whitelist
+addons:
+  sonarcloud:
+    organization: "skye2k2-github"
+    # SONAR_TOKEN managed via environment variable
+# Branch whitelist
 branches:
   only:
     - master
@@ -41,3 +45,4 @@ after_failure:
 
 after_script:
   - bin/after_script.sh
+  - sonar-scanner

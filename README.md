@@ -1,6 +1,22 @@
 # Dev CLI
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/84afc823b7f3426f7614/maintainability)](https://codeclimate.com/github/skye2k2/dev-cli/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/84afc823b7f3426f7614/test_coverage)](https://codeclimate.com/github/skye2k2/dev-cli/test_coverage) [![Build Status](https://travis-ci.com/skye2k2/dev-cli.svg?branch=master)](https://travis-ci.com/skye2k2/dev-cli)
+[![Build Status](https://travis-ci.com/skye2k2/dev-cli.svg?branch=master)](https://travis-ci.com/skye2k2/dev-cli)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/84afc823b7f3426f7614/maintainability)](https://codeclimate.com/github/skye2k2/dev-cli/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/84afc823b7f3426f7614/test_coverage)](https://codeclimate.com/github/skye2k2/dev-cli/test_coverage) 
+
+Available SonarCloud badges:
+
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=skye2k2-dev-cli&metric=bugs)](https://sonarcloud.io/dashboard?id=skye2k2-dev-cli)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=skye2k2-dev-cli&metric=code_smells)](https://sonarcloud.io/dashboard?id=skye2k2-dev-cli)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=skye2k2-dev-cli&metric=coverage)](https://sonarcloud.io/dashboard?id=skye2k2-dev-cli)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=skye2k2-dev-cli&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=skye2k2-dev-cli)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=skye2k2-dev-cli&metric=ncloc)](https://sonarcloud.io/dashboard?id=skye2k2-dev-cli)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=skye2k2-dev-cli&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=skye2k2-dev-cli)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=skye2k2-dev-cli&metric=alert_status)](https://sonarcloud.io/dashboard?id=skye2k2-dev-cli)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=skye2k2-dev-cli&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=skye2k2-dev-cli)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=skye2k2-dev-cli&metric=security_rating)](https://sonarcloud.io/dashboard?id=skye2k2-dev-cli)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=skye2k2-dev-cli&metric=sqale_index)](https://sonarcloud.io/dashboard?id=skye2k2-dev-cli)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=skye2k2-dev-cli&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=skye2k2-dev-cli)
 
 ## Intro
 
