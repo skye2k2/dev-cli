@@ -1,7 +1,7 @@
 {
   "name": "dev-cli",
   "version": "0.0.0",
-  "description": "A node-based CLI to run interesting commands",
+  "description": "A node-based CLI to run interesting and hopefully useful commands",
   "author": {
     "name": "Clif Bergmann",
     "url": "https://github.com/skye2k2"
@@ -10,7 +10,7 @@
     "dev": "./index.js"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "homepage": "https://github.com/skye2k2/dev-cli#readme",
   "keywords": [
@@ -21,16 +21,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skye2k2/dev-cli.git"
-  },
-  "scripts": {
-    "precommit": "node bin/pre_commit_checks.js && bin/pre_commit_commands.sh",
-    "preinstall": "git config --global url.https://github.com/.insteadOf git://github.com/",
-    "pretest": "semistandard --verbose '**/*.js' --fix | snazzy",
-    "standard": "semistandard --verbose '**/*.js' | snazzy",
-    "standard-fix": "semistandard --verbose '**/*.js' --fix | snazzy",
-    "start": "node index",
-    "test": "nyc mocha test/global-config.js test/*-test.js",
-    "lintCheck": "eslint index.js src/"
   },
   "dependencies": {
     "boxen": "^2.0.0",
@@ -45,43 +35,45 @@
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
+    "babel-eslint": "^8",
     "chai": "^4.2.0",
-    "husky": "^0.14.3",
-    "semistandard": "^12.0.0",
-    "snazzy": "^7.0.0",
+    "eslint": "^5",
+    "eslint-config-standard": "^12",
+    "eslint-config-secure": "^0.2",
+    "eslint-plugin-deprecate": "^0.5",
+    "eslint-plugin-import": "^2",
+    "eslint-plugin-jsdoc": "8.3.0",
+    "eslint-plugin-json": "^1",
+    "eslint-plugin-node": "^9",
+    "eslint-plugin-promise": "^4",
+    "eslint-plugin-sonarjs": "^0.3",
+    "eslint-plugin-standard": "^4",
+    "husky": "^2",
+    "lint-staged": "^8",
     "mocha": "^5.2.0",
-    "nyc": "^13.1.0"
+    "nyc": "^13.1.0",
+    "suppress-exit-code": "^0.1"
   },
-  "eslintConfig": {
-    "env": {
-      "node": true,
-      "mocha": true
-    },
-    "extends": [
-      "frontier"
-    ],
-    "rules": {
-      "no-await-in-loop": "off",
-      "no-constant-condition": "off",
-      "no-param-reassign": "off"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:staged && node bin/pre_commit_checks.js",
+      "pre-push": "npm run lint && CI=true npm run test"
     }
   },
-  "nyc": {
-    "report-dir": "reports/coverage",
-    "reporter": [
-      "text",
-      "lcov"
+  "lint-staged": {
+    "*.{js,json}": [
+      "suppress-exit-code npx eslint '**/*.js' '**/*.json' --fix",
+      "suppress-exit-code git add"
     ]
   },
-  "semistandard": {
-    "about": "https://github.com/Flet/semistandard#javascript-semi-standard-style",
-    "globals": [
-      "expect"
-    ],
-    "ignore": [
-      "**/*node_modules*/**",
-      "**/reports/**",
-      "**/test/**"
-    ]
+  "scripts": {
+    "preinstall": "git config --global url.https://github.com/.insteadOf git://github.com/",
+    "lint": "eslint '**/*.js' '**/*.json'",
+    "lint:fix": "eslint '**/*.js' '**/*.json'",
+    "lint:staged": "lint-staged",
+    "standard": "npm run lint",
+    "standard-fix": "npm run lint:fix",
+    "start": "node index",
+    "test": "nyc mocha test/global-config.js test/*-test.js"
   }
 }

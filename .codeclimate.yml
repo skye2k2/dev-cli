@@ -42,8 +42,8 @@ checks:
       threshold: 100
 prepare:
   fetch:
-  - url: "https://raw.githubusercontent.com/standard/eslint-config-standard/master/eslintrc.json"
-    path: ".eslint-config-standard.json"
+    - url: "https://raw.githubusercontent.com/standard/eslint-config-standard/master/index.js"
+      path: "eslint-config-standard.js"
 plugins:
   babel-eslint:
     enabled: true
@@ -53,8 +53,8 @@ plugins:
     enabled: true
     channel: "eslint-4"
     config:
+      config: .codeclimate.eslintrc.js
       extensions:
-        - .html
         - .js
       ignore_warnings: true
   fixme:
@@ -63,14 +63,9 @@ plugins:
       strings:
       - FIXME
       - TODO
-      - ToDo
-      - Todo
       - TO-DO
-      - To-Do
       - HACK
-      - Hack
       - HERE BE DRAGONS
-      - Here Be Dragons
   grep:
     enabled: true
     config:
@@ -115,6 +110,10 @@ plugins:
     enabled: true
 exclude_patterns:
   - ".*"
+  - eslint-config-standard.js
   - node_modules/
+  - "**/*-polyfill.js"
+  - "**/*min.*"
   - "**/reports/**/*"
   - "**/test/**/*"
+  - "**/vendor/**/*"

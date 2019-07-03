@@ -12,7 +12,7 @@ cache:
 dist: trusty
 language: node_js
 node_js:
-  - '8'
+  - '10'
 notifications:
   email:
     on_success: never
@@ -38,7 +38,11 @@ install:
 before_script:
   - bin/before_script.sh
 script:
-  - 'npm run standard && npx nyc mocha test/global-config.js test/*-test.js'
+  # Run linting checks, suppressing warnings for cleanliness, and run tests
+  - npx eslint '**/*.html' '**/*.js' '**/*.json' --quiet
+  # Run tests
+  - npx nyc mocha test/global-config.js test/*-test.js
+
 after_success:
 
 after_failure:

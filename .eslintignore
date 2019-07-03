@@ -1,3 +1,6 @@
+**/*min.*
 **/*node_modules*/**
+**/demo/**
 **/reports/**
 **/test/**
+**/vendor/**
