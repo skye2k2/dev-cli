@@ -39,7 +39,7 @@ before_script:
   - bin/before_script.sh
 script:
   # Run linting checks, suppressing warnings for cleanliness, and run tests
-  - npx eslint '**/*.html' '**/*.js' '**/*.json' --quiet
+  - npx eslint '**/*.js' '**/*.json' --quiet
   # Run tests
   - npx nyc mocha test/global-config.js test/*-test.js
 
