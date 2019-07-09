@@ -1,6 +1,6 @@
 {
   "name": "dev-cli",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A node-based CLI to run interesting and hopefully useful commands",
   "author": {
     "name": "Clif Bergmann",
@@ -35,6 +35,10 @@
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
+    "@stryker-mutator/core": "^2.0.0",
+    "@stryker-mutator/html-reporter": "^2.0.0",
+    "@stryker-mutator/javascript-mutator": "^2.0.0",
+    "@stryker-mutator/mocha-runner": "^2.0.0",
     "babel-eslint": "^8",
     "chai": "^4.2.0",
     "eslint": "^5",
@@ -51,7 +55,7 @@
     "husky": "^2",
     "lint-staged": "^8",
     "mocha": "^5.2.0",
-    "nyc": "^13.1.0",
+    "nyc": "^14",
     "suppress-exit-code": "^0.1"
   },
   "husky": {
@@ -74,6 +78,6 @@
     "standard": "npm run lint",
     "standard-fix": "npm run lint:fix",
     "start": "node index",
-    "test": "nyc mocha test/global-config.js test/*-test.js"
+    "test": "nyc --reporter=lcov --reporter=text --reporter=text-summary mocha test/global-config.js test/*test.js"
   }
 }

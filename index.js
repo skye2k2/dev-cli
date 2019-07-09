@@ -8,46 +8,80 @@ const nodeVersion = process.versions.node;
 
 checkIfOutdated(runTheProgram);
 
+/**
+ * @function
+ * @description - The core runner of the dev-cli.
+ * @returns {undefined}
+ */
 function runTheProgram () {
-  // Available subcommands
-  require('./src/lintAssetManifest')(program);
-
-  program.outputHelp = function () {
-    console.log(help());
-    this.emit('--help');
-  };
+  checkRequiredVersions();
+  // Available sub-commands:
 
   program
-    .command('blueprint')
-    .usage('<command>')
+    .command('global')
+    .usage('<global>')
     .description(
-      'Make a version 1 of a blueprint.yml file. Can use a 0.3 blueprint to help in the conversion, but not necessary'
+      'Run commands against your entire system'
     )
     .action(() => {
-      if (semverDiff(nodeVersion, '8.5.0')) {
-        console.log(
-          chalk.red(`You are running node version ${nodeVersion}. The blueprint conversion script requires you to run it with node 8.5.0 or higher.
-        (Your app does not need node 8, just your computer for the few minutes you run this script)`)
-        );
-        process.exit(1);
-      }
-      // putting the require here after they specify the blueprint command allows our users to not have node 8 if they are only using the init or element command
-      require('./src/blueprint.js')();
+      require('./src/global.js')();
     });
 
+  program
+    .command('local')
+    .usage('<local>')
+    .description(
+      'Run commands against local repositories, based on current working directory'
+    )
+    .action(() => {
+      require('./src/local.js')();
+    });
+
+  program
+    .command('remote')
+    .usage('<remote>')
+    .description(
+      'Run commands against remote repositories'
+    )
+    .action(() => {
+      require('./src/local.js')();
+    });
+
+  // program version definition needs to come after all command options
   program
     // Bring in version from package.json
     .version(require('./package.json').version)
     // Parse the arguments
     .parse(process.argv);
 
-  if (!program.args.length) program.outputHelp();
+  program.outputHelp = function () {
+    console.log(help());
+  };
+
+  if (!program.args.length) {
+    program.outputHelp();
+  }
 }
 
+/**
+ * @function checkRequiredVersions
+ * @description - Ensure that minimum required environment conditions are met.
+ */
+function checkRequiredVersions () {
+  if (semverDiff(nodeVersion, '8.5.0')) {
+    console.log(
+      chalk.red(`You are running node version ${nodeVersion}. This script depends on node version 8+, and honestly, you should update, regardless.`)
+    );
+    process.exit(1);
+  }
+}
+
+/**
+ * @function help
+ * @description - The command help text displayed when the --help flag is passed in.
+ * @returns {undefined}
+ */
 function help () {
   return `
-${program.commandHelp().replace('Commands:', chalk.bold.underline('Commands'))}
-  ${chalk.bold.underline('Options')}
-
-${program.optionHelp().replace(/^/gm, '    ')}`;
+${program.commandHelp().replace('Commands:', chalk.bold.underline('Commands'))}`;
 }

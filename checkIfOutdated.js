@@ -27,7 +27,7 @@ module.exports = runTheProgram => {
   const packagesToCheck = findGithubPackagesFromDependencies();
   const localPackageJsonData = getLocalModuleVersions(packagesToCheck);
   // we add this afterward getting the local data because dev-cli isnt in node_modules, but we still want to check if it needs to be updated
-  packagesToCheck['dev-cli'] = 'github:fs-webdev/dev-cli';
+  packagesToCheck['dev-cli'] = 'github:skye2k2/dev-cli';
 
   Promise.all(makeAllGithubChecks(packagesToCheck, localPackageJsonData))
     .then(updateMessages => {
@@ -42,7 +42,7 @@ module.exports = runTheProgram => {
       }
 
       if (dependencyUpdateMessages) {
-        const npmInstallArgs = ['install', '-g', 'fs-webdev/dev-cli'];
+        const npmInstallArgs = ['install', '-g', 'skye2k2/dev-cli'];
         const npmInstallString = npmInstallArgs.join(' ');
 
         let updateMessage = `Updates available:\n${dependencyUpdateMessages}

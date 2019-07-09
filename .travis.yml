@@ -41,7 +41,7 @@ script:
   # Run linting checks, suppressing warnings for cleanliness, and run tests
   - npx eslint '**/*.js' '**/*.json' --quiet
   # Run tests
-  - npx nyc mocha test/global-config.js test/*-test.js
+  - npm test
 
 after_success:
 
